@@ -71,6 +71,7 @@
     _animateEvenIfNotFirstResponder = NO;
     _floatingLabelShowAnimationDuration = kFloatingLabelShowAnimationDuration;
     _floatingLabelHideAnimationDuration = kFloatingLabelHideAnimationDuration;
+    _textXPadding = 0.0f;
 }
 
 #pragma mark -
@@ -189,14 +190,14 @@
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
     CGRect rect = [super textRectForBounds:bounds];
-    rect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(ceilf(_floatingLabel.font.lineHeight+_placeholderYPadding), 0.0f, 0.0f, 0.0f));
+    rect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(ceilf(_floatingLabel.font.lineHeight+_placeholderYPadding), _textXPadding, 0.0f, 0.0f));
     return CGRectIntegral(rect);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
     CGRect rect = [super editingRectForBounds:bounds];
-    rect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(ceilf(_floatingLabel.font.lineHeight+_placeholderYPadding), 0.0f, 0.0f, 0.0f));
+    rect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(ceilf(_floatingLabel.font.lineHeight+_placeholderYPadding), _textXPadding, 0.0f, 0.0f));
     return CGRectIntegral(rect);
 }
 

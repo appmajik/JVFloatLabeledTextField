@@ -74,6 +74,7 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     titleField.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     titleField.floatingLabelTextColor = floatingLabelColor;
     titleField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    titleField.textXPadding = 10.0f;
 //    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
 //    titleField.leftView = leftView;
 //    titleField.leftViewMode = UITextFieldViewModeAlways;
@@ -128,6 +129,7 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     descriptionField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
     descriptionField.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     descriptionField.floatingLabelTextColor = floatingLabelColor;
+    descriptionField.textXPadding = 10.0f;
     [self.view addSubview:descriptionField];
     
     [titleField becomeFirstResponder];

@@ -66,7 +66,7 @@
 {
     self.startingTextContainerInsetTop = self.textContainerInset.top;
     self.floatingLabelShouldLockToTop = 1;
-    self.textContainer.lineFragmentPadding = 0;
+    [self setTextXPadding:0.0f];
     
     _placeholderLabel = [[UILabel alloc] initWithFrame:self.frame];
     _placeholderLabel.font = self.font;
@@ -286,6 +286,11 @@
     _floatingLabelFont = floatingLabelFont;
     _floatingLabel.font = (_floatingLabelFont ? _floatingLabelFont : [UIFont boldSystemFontOfSize:12.0f]);
     self.placeholder = self.placeholder; // Force the label to lay itself out with the new font.
+}
+
+- (void)setTextXPadding:(CGFloat)textXPadding {
+    _textXPadding = textXPadding;
+    self.textContainer.lineFragmentPadding = _textXPadding;
 }
 
 #pragma mark - Apple UITextView defaults

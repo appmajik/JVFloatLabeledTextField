@@ -59,6 +59,11 @@
 @property (nonatomic) CGFloat placeholderYPadding UI_APPEARANCE_SELECTOR;
 
 /**
+ *  Pads the x-axis of the text
+ */
+@property (nonatomic, assign) CGFloat textXPadding;
+
+/**
  * Font to be applied to the floating label. 
  * Defaults to `[UIFont boldSystemFontOfSize:12.0f]`.
  * Provided for the convenience of using as an appearance proxy.
