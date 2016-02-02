@@ -103,6 +103,12 @@
 @property (nonatomic, assign) NSTimeInterval floatingLabelHideAnimationDuration UI_APPEARANCE_SELECTOR;
 
 /**
+ *  Set to true if you want the text to be prefixed with an astrix indicating
+ *  a required field
+ */
+@property (nonatomic, assign) BOOL indicateRequiredField;
+
+/**
  *  Sets the placeholder and the floating title
  *
  *  @param placeholder The string that to be shown in the text field when no other text is present.

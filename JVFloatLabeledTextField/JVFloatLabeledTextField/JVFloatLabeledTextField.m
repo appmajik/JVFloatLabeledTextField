@@ -163,28 +163,46 @@
 
 #pragma mark - UITextField
 
+- (void)setPlaceholder:(NSString *)placeholder {
+  NSString *localPlaceholder = placeholder;
+  if (_indicateRequiredField) {
+    localPlaceholder =
+        [self prefixStringWithRequiredFieldIndicator:placeholder];
+  }
+  [super setPlaceholder:localPlaceholder];
+
+  _floatingLabel.text = localPlaceholder;
+  [_floatingLabel sizeToFit];
+}
+
+- (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder {
+  NSMutableAttributedString *localString = nil;
+  if (_indicateRequiredField) {
+    localString = [[NSMutableAttributedString alloc] initWithString:@"* "];
+    [localString appendAttributedString:attributedPlaceholder];
+  } else {
+    localString = [[NSMutableAttributedString alloc]
+        initWithAttributedString:attributedPlaceholder];
+  }
+  [super setAttributedPlaceholder:localString];
+
+  _floatingLabel.text = attributedPlaceholder.string;
+  [_floatingLabel sizeToFit];
+}
+
 - (void)setPlaceholder:(NSString *)placeholder
-{
-    [super setPlaceholder:placeholder];
+         floatingTitle:(NSString *)floatingTitle {
+  NSString *localString = floatingTitle;
+  NSString *localPlaceholder = placeholder;
+  if (_indicateRequiredField) {
+    localString = [self prefixStringWithRequiredFieldIndicator:floatingTitle];
+    localPlaceholder =
+        [self prefixStringWithRequiredFieldIndicator:placeholder];
+  }
+  [super setPlaceholder:localPlaceholder];
 
-    _floatingLabel.text = placeholder;
-    [_floatingLabel sizeToFit];
-}
-
-- (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
-{
-    [super setAttributedPlaceholder:attributedPlaceholder];
-	
-    _floatingLabel.text = attributedPlaceholder.string;
-    [_floatingLabel sizeToFit];
-}
-
-- (void)setPlaceholder:(NSString *)placeholder floatingTitle:(NSString *)floatingTitle
-{
-    [super setPlaceholder:placeholder];
-
-    _floatingLabel.text = floatingTitle;
-    [_floatingLabel sizeToFit];
+  _floatingLabel.text = localString;
+  [_floatingLabel sizeToFit];
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds
@@ -246,6 +264,11 @@
         accessibilityLabel = self.text;
     }
     return accessibilityLabel;
+}
+
+#pragma mark - Private
+- (NSString *)prefixStringWithRequiredFieldIndicator:(NSString*)string {
+    return [NSString stringWithFormat:@"* %@",string];
 }
 
 @end

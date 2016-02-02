@@ -68,6 +68,7 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
     
     JVFloatLabeledTextField *titleField = [[JVFloatLabeledTextField alloc] initWithFrame:
                                            CGRectMake(kJVFieldHMargin, topOffset, self.view.frame.size.width - 2 * kJVFieldHMargin, kJVFieldHeight)];
+    titleField.indicateRequiredField = YES;
     titleField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Title", @"")
                                                                        attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     titleField.font = [UIFont systemFontOfSize:kJVFieldFontSize];
